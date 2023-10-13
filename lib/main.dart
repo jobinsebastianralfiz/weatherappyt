@@ -13,13 +13,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Weather App',
       theme: ThemeData(
 
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.transparent,
-          elevation:0,
+          elevation:0
         ),
+
+       iconTheme: IconThemeData(
+         color: Colors.white
+       ),
 
 
 
