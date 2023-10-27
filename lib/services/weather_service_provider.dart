@@ -23,7 +23,7 @@ class WeatherServiceProvider extends ChangeNotifier {
     try {
       final String apiUrl =
           "${APIEndPoints().cityUrl}${city}&appid=${APIEndPoints().apikey}${APIEndPoints().unit}";
-      print(apiUrl);
+      //print(apiUrl);
       final response = await http.get(Uri.parse(apiUrl));
 
       if (response.statusCode == 200) {
@@ -31,7 +31,8 @@ class WeatherServiceProvider extends ChangeNotifier {
         print(data);
 
         _weather = WeatherModel.fromJson(data);
-        print(_weather!.name);
+        print(_weather!.main!.feelsLike);
+
         notifyListeners();
       } else {
         _error = "Failed to load data";
@@ -40,7 +41,7 @@ class WeatherServiceProvider extends ChangeNotifier {
       _error = "Failed to load data $e";
     } finally {
       _isloading = false;
-      notifyListeners();
+
     }
   }
 }
